@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package gotrader.v1;
+
+option go_package = "github.com/jedi116/go-trader/proto/gotrader/v1;v1";
+
+import "proto/common.proto";
+
+service TradeService {
+  rpc PlaceOrder(PlaceOrderRequest) returns (PlaceOrderResponse);
+  rpc ListTrades(ListTradesRequest) returns (ListTradesResponse);
+}
+
+message PlaceOrderRequest {
+  string instrument = 1;
+  double units = 2; // positive buy, negative sell
+}
+
+message PlaceOrderResponse {
+  Trade trade = 1;
+}
+
+message ListTradesRequest {
+  int32 limit = 1;
+}
+
+message ListTradesResponse {
+  repeated Trade trades = 1;
+}
+
+

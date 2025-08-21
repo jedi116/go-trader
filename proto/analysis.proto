@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package gotrader.v1;
+
+option go_package = "github.com/jedi116/go-trader/proto/gotrader/v1;v1";
+
+import "proto/common.proto";
+
+service AnalysisService {
+  rpc GetCandles(GetCandlesRequest) returns (GetCandlesResponse);
+}
+
+message GetCandlesRequest {
+  string instrument = 1;
+  string granularity = 2; // M1, M5, H1, D
+  int32 count = 3;
+}
+
+message GetCandlesResponse {
+  string instrument = 1;
+  string granularity = 2;
+  repeated Candle candles = 3;
+}
+
+

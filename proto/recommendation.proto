@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package gotrader.v1;
+
+option go_package = "github.com/jedi116/go-trader/proto/gotrader/v1;v1";
+
+import "proto/common.proto";
+
+service RecommendationService {
+  rpc CreateRecommendation(CreateRecommendationRequest) returns (CreateRecommendationResponse);
+  rpc ListRecommendations(ListRecommendationsRequest) returns (ListRecommendationsResponse);
+  rpc AcceptRecommendation(AcceptRecommendationRequest) returns (AcceptRecommendationResponse);
+}
+
+message CreateRecommendationRequest {
+  string instrument = 1;
+  Direction direction = 2;
+  double units = 3;
+  string rationale = 4;
+}
+
+message CreateRecommendationResponse {
+  Recommendation recommendation = 1;
+}
+
+message ListRecommendationsRequest { int32 limit = 1; }
+message ListRecommendationsResponse { repeated Recommendation recommendations = 1; }
+
+message AcceptRecommendationRequest { string id = 1; }
+message AcceptRecommendationResponse { Trade trade = 1; Recommendation recommendation = 2; }
+
+

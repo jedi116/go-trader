@@ -8,6 +8,16 @@
 *.so
 *.dylib
 
+# Local environment files
+.env
+
+# Build artifacts
+/coverage.*
+*.out
+
+# IDE
+.idea/
+.vscode/
 # Test binary, built with `go test -c`
 *.test
 
@@ -28,5 +38,5 @@ go.work.sum
 .env
 
 # Editor/IDE
-# .idea/
+ .idea/
 # .vscode/
